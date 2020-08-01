@@ -1,0 +1,17 @@
+<cdk-virtual-scroll-viewport itemSize="250" class="scroll-container">
+    <ng-container *cdkVirtualFor="let photo of (photos | async)" class="photo-container">
+        <div class="shadow-block">
+            <div class="photo-header">
+                <div>Title: </div>
+                <div class="photo-title">{{ photo.title }}</div>
+                <button mat-raised-button
+                        (click)="openDialog(photo, 'edit-photo')"
+                        style="margin-right: 10px;">Edit</button>
+                <button mat-mini-fab (click)="onDelete(photo.id)" color="primary">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <img (click)="openDialog(photo, 'full-photo')" class="photo-image" src="{{photo.thumbnailUrl}}">
+        </div>
+    </ng-container>     
+</cdk-virtual-scroll-viewport>
